@@ -1,0 +1,49 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+:root{
+  --btn-color: #eaeaea;
+  --text-color: #7e7e7e;
+}
+
+/* coontainer */
+.grid-container{
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+place-items: center;
+grid-gap: 1rem;
+height:100vh;
+}
+
+/* button */
+
+
+.btn{
+  background: #fff;
+  outline: transparent;
+  border: transparent;
+  border: 1px solid var(--btn-color);
+  border-radius: 8px;
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color:var(--text-color)
+}
+
+.btn:hover{
+  background: var(--btn-color);
+  color: var(--text-color);
+}
+
+
+.p-lg{
+  font-size: 4rem;
+  font-weight: bold;
+  text-transform: capitalize;
+  color: var(--text-color);
+}
