@@ -1,4 +1,4 @@
-import Counter from './Counter'
+import Counter from './modules/Counter'
 
 const App = () => {
   return (

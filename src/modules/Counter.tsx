@@ -1,5 +1,5 @@
 import {  useState,useCallback } from 'react';
-import './Counter.css'
+import '../common/styles/Counter.css';
 
 function Counter() {
 
