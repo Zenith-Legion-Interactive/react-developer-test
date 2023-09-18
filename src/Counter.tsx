@@ -1,42 +1,38 @@
+import {  useState,useCallback } from 'react';
 import './Counter.css'
 
-function Counter({count = 0}) {
+function Counter() {
 
 
+	const [count, setCount] = useState<number>(0);
 
   // increase count
-  const onIncrement = () =>{
-		count += 1;
-		displayCounter();
-	}
+  const onIncrement = useCallback(() => {
+		setCount(count + 1);
+	}, [count]);
 
 // decrener count
-  const onDecrement =  () =>{
-		if(count > 0){
-			count -= 1;
-			displayCounter();
-		}
+  const onDecrement = useCallback(() => {
+		if(count > 0) setCount(count - 1);
+	}, [count]);
 
-	}
+	const onReset = useCallback(() => {
+		setCount(0);
+	}, []);
+	
 
-	const displayCounter = () =>{
-
-	const countDisplay = document.getElementById('display');
-			if (countDisplay) {
-				countDisplay.textContent = `${count}`;
-			}
-
-
-	}
 
   return (
 		<div className='grid-container'>
 			<button onClick={onDecrement} className='btn'>
 				Decrement
 			</button>
-			<p id='display' className='p-lg'>{count}</p>
+			<p className='p-lg'>{count}</p>
 			<button onClick={onIncrement} className='btn'>
 				Increment
+			</button>
+			<button onClick={onReset} className='btn grid-align'>
+				Reset
 			</button>
 		</div>
 	);
