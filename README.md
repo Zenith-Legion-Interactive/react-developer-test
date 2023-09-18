@@ -8,7 +8,7 @@ Instructions:
 - The candidate should complete the tasks and answer the questions to the best of their ability.
 - The candidate must write clean and maintainable code.
 - Time Limit: 1 week.
-- When the candidate is done, PR your work to master.
+- When the candidate is done, candidate must PR their work to master.
 
 Task 1: Setup and Basic Component
 
