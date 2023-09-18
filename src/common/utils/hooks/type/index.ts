@@ -13,6 +13,7 @@ export interface IUser {
 	registerDate: string;
 	title: string;
 	updatedDate: string;
+	properties: Record<string, string>;
 }
 
 export interface Location {

@@ -1,13 +1,15 @@
 import RenderIf from "../common/components/RenderIf";
 import useDummyApiHandler from "../common/utils/hooks/useDummyApiHandler";
-import '../common/styles/UserList.css';
-import { isEmpty } from 'lodash';
 
+import { isEmpty } from 'lodash';
+import MemoizedTableRows, { PropertyKey } from '../common/components/Table';
 
 const UserList = () => {
 
-  const { state, users } = useDummyApiHandler('user');
+  const { state, users } = useDummyApiHandler('user',true);
 
+	  const propertyKeysToShow: PropertyKey[] = ['email' as unknown as PropertyKey];
+		const header = ['Name', 'Email'];
 
 
   return (
@@ -24,22 +26,7 @@ const UserList = () => {
 			</RenderIf>
 			<RenderIf value={state === 'success' && !isEmpty(users)}>
 				<div className='wrapper'>
-					<table border={1}>
-						<thead>
-							<th>Name</th>
-							<th>Email</th>
-						</thead>
-						<tbody>
-							{users.map((user) => (
-								<tr key={user.id}>
-									<td className='font-bold'>
-										{user.firstName} {user.lastName}
-									</td>
-									<td className='font-semi-bold'>{user.email}</td>
-								</tr>
-							))}
-						</tbody>
-					</table>
+					<MemoizedTableRows data={users} head={header} href='true' propertyKeys={propertyKeysToShow} />
 				</div>
 			</RenderIf>
 			<RenderIf value={state === 'error'}>
