@@ -4,7 +4,7 @@ import { Row, Col, Card, ButtonGroup } from "react-bootstrap";
 import Button from "../Button/Button";
 import { increment, decrement, reset } from "../../features/counterSlice";
 
-function Counter({ counterId }) {
+const Counter = ({ counterId }) => {
   const count = useSelector(
     (state) => state?.counters?.counters[counterId] || 0
   );
@@ -20,7 +20,6 @@ function Counter({ counterId }) {
 
   const handleReset = () => {
     dispatch(reset({ counterId }));
-  };
 
   return (
     <center>
@@ -53,6 +52,6 @@ function Counter({ counterId }) {
       </Row>
     </center>
   );
-}
+};
 
 export default Counter;
