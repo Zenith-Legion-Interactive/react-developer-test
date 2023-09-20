@@ -34,6 +34,8 @@ const onRoute = useCallback(() => {
 
   return (
 		<div>
+			<input type='hidden' data-testid='getStatus' value={state} />
+			<input type='hidden' data-testid='getProfile' value={users.length} />
 			<h1>Profile</h1>
 			<div>
 				<IButton variant='outlined' color='primary' label='Back' onClick={onRoute} />

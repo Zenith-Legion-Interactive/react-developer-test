@@ -7,12 +7,13 @@ import React from 'react';
 type IProps={
   state:IState,
   data:IUser[],
-  children:React.ReactNode
+  children?:React.ReactNode
 }
 
 const UserRender = ({ state, data, children }: IProps) => {
 	return (
 		<>
+			
 			<RenderIf value={state === 'fetching'}>
 				<div className='wrapper'>
 					<p className='text-lg'>Fetching</p>

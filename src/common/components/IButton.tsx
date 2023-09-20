@@ -22,7 +22,7 @@ const IButton: React.FunctionComponent<React.DetailedHTMLProps<React.ButtonHTMLA
 	};
 	
 	return (
-		<button style={sxProps} className='btn' {...props}>
+		<button role='getRoute' style={sxProps} className='btn' {...props}>
 			{label}
 		</button>
 	);

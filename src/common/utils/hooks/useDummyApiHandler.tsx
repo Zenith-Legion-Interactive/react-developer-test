@@ -42,7 +42,7 @@ const useDummyApiHandler = (endpoint: string,nested:boolean) => {
 					setState('success');
 				} catch (error) {
 					setState('error');
-					console.error(error);
+					// console.error(error);
 				}
 		}
 		else{

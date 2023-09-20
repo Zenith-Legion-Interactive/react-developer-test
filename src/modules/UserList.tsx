@@ -4,6 +4,9 @@ import useDummyApiHandler from "../common/utils/hooks/useDummyApiHandler";
 import { isEmpty } from 'lodash';
 import MemoizedTableRows, { PropertyKey } from '../common/components/Table';
 
+
+
+
 const UserList = () => {
 
   const { state, users } = useDummyApiHandler('user',true);
@@ -14,6 +17,8 @@ const UserList = () => {
 
   return (
 		<div>
+			<input type='hidden' data-testid='getStatus' value={state} />
+			<input type='hidden' data-testid='getUserList' value={users.length} />
 			<RenderIf value={state === 'fetching'}>
 				<div className='wrapper'>
 					<p className='text-lg'>Fetching</p>

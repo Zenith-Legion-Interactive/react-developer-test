@@ -25,14 +25,14 @@ function Counter() {
 
   return (
 		<div className='grid-container'>
-			<IButton onClick={onDecrement} label='Decrement'/>
-			<p className='p-lg'>{count}</p>
-			<IButton color={'secondary'} onClick={onIncrement} label='Increment' />
-				
-	
+			<IButton data-testid='decrement' onClick={onDecrement} label='Decrement' />
+			<p className='p-lg' data-testid='display'>
+				{count}
+			</p>
+			<IButton data-testid='increment' color={'secondary'} onClick={onIncrement} label='Increment' />
+
 			<div className='grid-align'>
-				<IButton variant='contained' color={'danger'} onClick={onReset} label='Reset' />
-				
+				<IButton data-testid='reset' variant='contained' color={'danger'} onClick={onReset} label='Reset' />
 			</div>
 		</div>
 	);
