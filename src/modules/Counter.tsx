@@ -1,27 +1,13 @@
 import {  useState,useCallback } from 'react';
 import '../common/styles/Counter.css';
 import IButton from '../common/components/IButton';
+import useCounter from '../common/utils/hooks/useCounter';
 
 function Counter() {
 
 
-	const [count, setCount] = useState<number>(0);
-
-  // increase count
-  const onIncrement = useCallback(() => {
-		setCount(count + 1);
-	}, [count]);
-
-// decrener count
-  const onDecrement = useCallback(() => {
-		if(count > 0) setCount(count - 1);
-	}, [count]);
-
-	const onReset = useCallback(() => {
-		setCount(0);
-	}, []);
+	const { onDecrement, onIncrement, onReset, count } = useCounter();
 	
-
 
   return (
 		<div className='grid-container'>
