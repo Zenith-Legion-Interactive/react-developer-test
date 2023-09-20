@@ -5,11 +5,11 @@ const App = () => {
   return (
 		<>
 
-		<CounterProvider>
+		{/* <CounterProvider> */}
 			<Counter />
 			{/* <Counter /> */}
-		</CounterProvider>
-	
+		{/* </CounterProvider> */}
+		
 	
 		</>
 	);

@@ -1,31 +1,34 @@
-import {  useContext } from 'react';
 import '../common/styles/Counter.css';
 import IButton from '../common/components/IButton';
 import DisplayCounter from './DisplayCounter';
-import { CounterContext } from '../common/utils/context-provider';
-
+import { decrement, increment, reset } from '../common/utils/redux/counterSlice';
+import { useAppDispatch } from '../common/utils/redux/hooks';
 function Counter() {
 
-  const contextValue = useContext(CounterContext);
+	const dispatch = useAppDispatch();
 
-	if (contextValue === null) {
-		// Handle the case where the context value is null
-		return null;
-	}
+  // const contextValue = useContext(CounterContext);
 
-	const {  onIncrement, onDecrement, onReset } = contextValue;
+	// if (contextValue === null) {
+	// 	// Handle the case where the context value is null
+	// 	return null;
+	// }
+
+	// const {  onIncrement, onDecrement, onReset } = contextValue;
 
   return (
 		<div className='grid-container'>
-			<IButton data-testid='decrement' onClick={onDecrement} label='Decrement' />
+			<IButton data-testid='decrement' onClick={()=> dispatch(decrement())} label='Decrement' />
 			<DisplayCounter/>
-			<IButton data-testid='increment' color={'secondary'} onClick={onIncrement} label='Increment' />
+			<IButton data-testid='increment' color={'secondary'} onClick={()=> dispatch(increment())} label='Increment' />
 
 			<div className='grid-align'>
-				<IButton data-testid='reset' variant='contained' color={'danger'} onClick={onReset} label='Reset' />
+				<IButton data-testid='reset' variant='contained' color={'danger'} onClick={()=> dispatch(reset())} label='Reset' />
 			</div>
 		</div>
 	);
 }
+
+
 
 export default Counter
