@@ -54,7 +54,7 @@ const MemoizedTableRows = <T extends IUser>({ data, head, clsx, isProfile, href,
 										<td>
 											<img src={item.picture} className='img-rounded' />
 										</td>
-										<td>{item.location.city}</td>
+										{/* <td>{item.location.city}</td> */}
 									</>
 								) : (
 									<a className={clsx} href={!isEmpty(href) ? `profile/${item.id}` : ''}>

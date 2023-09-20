@@ -1,8 +1,9 @@
 import { createBrowserRouter } from 'react-router-dom';
 import UserList from '../modules/UserList';
 import Profile from '../modules/Profile';
-import Counter from '../modules/Counter';
+
 import '../common/styles/UserList.css';
+import App from '../App';
 
 const PublicRoute = createBrowserRouter([
 	{
@@ -15,7 +16,7 @@ const PublicRoute = createBrowserRouter([
 	},
 	{
 		path: '/counter',
-		element: <Counter />,
+		element: <App />,
 	},
 ]);
 

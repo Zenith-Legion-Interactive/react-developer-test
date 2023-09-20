@@ -1,5 +1,6 @@
 import {  useState,useCallback } from 'react';
 import '../common/styles/Counter.css';
+import IButton from '../common/components/IButton';
 
 function Counter() {
 
@@ -24,16 +25,15 @@ function Counter() {
 
   return (
 		<div className='grid-container'>
-			<button onClick={onDecrement} className='btn'>
-				Decrement
-			</button>
+			<IButton onClick={onDecrement} label='Decrement'/>
 			<p className='p-lg'>{count}</p>
-			<button onClick={onIncrement} className='btn'>
-				Increment
-			</button>
-			<button onClick={onReset} className='btn grid-align'>
-				Reset
-			</button>
+			<IButton color={'secondary'} onClick={onIncrement} label='Increment' />
+				
+	
+			<div className='grid-align'>
+				<IButton variant='contained' color={'danger'} onClick={onReset} label='Reset' />
+				
+			</div>
 		</div>
 	);
 }
