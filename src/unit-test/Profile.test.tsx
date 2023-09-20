@@ -4,7 +4,7 @@ import { fireEvent, render } from '@testing-library/react';
 import {  BrowserRouter } from 'react-router-dom';
 import Profile from '../modules/Profile';
 
-describe('Demonstrating some useNavigate() tests ', () => {
+describe('render back button', () => {
 	it('render back button', () => {
 		const { getByText } = render(
 			<BrowserRouter>

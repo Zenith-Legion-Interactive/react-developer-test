@@ -1,11 +1,14 @@
-import {  fireEvent, render, screen } from '@testing-library/react';
+import {  fireEvent, screen } from '@testing-library/react';
 import Counter from '../modules/Counter';
 import { act } from 'react-dom/test-utils';
+import { render } from './setupTest';
 
 
 describe('Counter Component', () => {
 	it('display counter default value', async() => {
-	await act(async () => render(<Counter />));
+	
+		render(<Counter />)
+
 		
 		const displayCounter = screen.getByTestId('display');
 	
@@ -17,7 +20,8 @@ describe('Counter Component', () => {
 
 	it('increment', async() => {
 
-	await act(async () => render(<Counter />));
+		render(<Counter />)
+
 		
 
 		const incrementButton = screen.getByTestId('increment');
@@ -35,7 +39,7 @@ describe('Counter Component', () => {
 
 
 		it('decrement', async() => {
-			await act(async () => render(<Counter />));
+		await act(async () => render(<Counter />));
 		
 
 			const incrementButton = screen.getByTestId('decrement');
@@ -51,7 +55,9 @@ describe('Counter Component', () => {
 		});
 
 		it('reset', async() => {
-			await act(async () => render(<Counter />));
+
+		render(<Counter />);
+
 		
 
 					const resetButton = screen.getByTestId('reset');
