@@ -1,20 +1,24 @@
-import {  useState,useCallback } from 'react';
+import {  useContext } from 'react';
 import '../common/styles/Counter.css';
 import IButton from '../common/components/IButton';
-import useCounter from '../common/utils/hooks/useCounter';
+import DisplayCounter from './DisplayCounter';
+import { CounterContext } from '../common/utils/context-provider';
 
 function Counter() {
 
+  const contextValue = useContext(CounterContext);
 
-	const { onDecrement, onIncrement, onReset, count } = useCounter();
-	
+	if (contextValue === null) {
+		// Handle the case where the context value is null
+		return null;
+	}
+
+	const {  onIncrement, onDecrement, onReset } = contextValue;
 
   return (
 		<div className='grid-container'>
 			<IButton data-testid='decrement' onClick={onDecrement} label='Decrement' />
-			<p className='p-lg' data-testid='display'>
-				{count}
-			</p>
+			<DisplayCounter/>
 			<IButton data-testid='increment' color={'secondary'} onClick={onIncrement} label='Increment' />
 
 			<div className='grid-align'>
