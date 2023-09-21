@@ -1,5 +1,10 @@
-import { Form, useLoaderData  } from "react-router-dom";
-import { getContact } from "../contacts";
+import {
+  useLoaderData,
+  Form,
+  useFetcher,
+} from "react-router-dom";
+import { getContact, updateContact  } from "../contacts";
+import { ParamsObject, RequestParamsObject } from "../types";
 
 
 
@@ -8,30 +13,43 @@ export interface ContactLoaderInterface {
         contactId?: string, //declared on main.tsx dynamic url param
     }
 }
-
-export async function loader({ params }: ContactLoaderInterface) {
-    const contact = await getContact(params?.contactId);
-    return { contact };
-}
-
 export interface ContactObjectInterface {
-    id?: string | number;
-    first?: string;
-    last?: string;
-    avatar?: string;
-    twitter?: string;
-    notes?: string;
-    favorite?: boolean;
-    createdAt?: number;
+  id?: string | number;
+  first?: string;
+  last?: string;
+  avatar?: string;
+  twitter?: string;
+  notes?: string;
+  favorite?: boolean;
+  createdAt?: number;
 } 
 
 interface LoaderContact{
-    contact?: ContactObjectInterface;
+  contact?: ContactObjectInterface;
+}
+
+export async function action({ request, params }: RequestParamsObject) {
+  let formData = await request.formData();
+  return updateContact(params.contactId, {
+    favorite: formData.get("favorite") === "true",
+  });
+}
+
+export async function loader({ params }: ParamsObject) {
+  const contact = await getContact(params.contactId);
+  if (!contact) {
+    throw new Response("", {
+      status: 404,
+      statusText: "Not Found",
+    });
+  }
+  return { contact };
 }
 
 
 export default function Contact() {
-    const { contact } = useLoaderData() as LoaderContact;
+  
+  const { contact } = useLoaderData() as LoaderContact;
 
   return (
     <div id="contact">
@@ -97,10 +115,14 @@ export interface FavoriteProps {
 }
 
 function Favorite({contact}: FavoriteProps) {
-  // yes, this is a `let` for later
+  const fetcher = useFetcher();
   let favorite = contact?.favorite;
+
+  if (fetcher.formData) {
+    favorite = fetcher.formData.get("favorite") === "true";
+  }
   return (
-    <Form method="post">
+    <fetcher.Form method="post">
       <button
         name="favorite"
         value={favorite ? "false" : "true"}
@@ -112,6 +134,6 @@ function Favorite({contact}: FavoriteProps) {
       >
         {favorite ? "★" : "☆"}
       </button>
-    </Form>
+    </fetcher.Form>
   );
 }
