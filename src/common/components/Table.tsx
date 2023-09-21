@@ -5,10 +5,10 @@ import { isEmpty } from 'lodash';
 
 type KeyOfType<T> = Extract<keyof T, string>;
 
-export interface PropertyKey {
-	key: KeyOfType<T> | string; // Allow both string keys and nested property objects
-	nestedKey?: string; // Optional nested key
-}
+
+//  this allow to pass string,object and array of object as property key
+export type PropertyKey<T extends object | string> = { key: KeyOfType<T> | string; nestedKey?: string } | string;
+
 
 interface TableDataProps<T extends IUser> {
 	data: T[];
@@ -16,12 +16,10 @@ interface TableDataProps<T extends IUser> {
 	href?: string;
 	clsx?: string;
 	isProfile?: boolean;
-	propertyKeys: PropertyKey[];
+	propertyKeys: PropertyKey<T>[];
 }
 
-function isPropertyKey(obj: any): obj is PropertyKey {
-	return typeof obj === 'object' && 'key' in obj && 'nestedKey' in obj;
-}
+
 
 
 
@@ -61,9 +59,16 @@ const MemoizedTableRows = <T extends IUser>({ data, head, clsx, isProfile, href,
 								</td>
 							)}
 
-							{propertyKeys.map((key) => (
-								<td key={isPropertyKey(key) ? `${key.key}-${key.nestedKey}` : String(key)}>{isPropertyKey(key) ? (key.nestedKey ? (item[key.key as keyof IUser] as Record<string, string>)[key.nestedKey] : undefined) : (item[key as keyof IUser] as string)}</td>
-							))}
+							{
+								!isEmpty(propertyKeys) && propertyKeys.map((key) => {
+									if (typeof key === 'string') {
+										return <td key={key}>{item[key as keyof IUser] as string}</td>;
+									}
+									if (typeof key === 'object') {
+										return <td key={key.key}>{key.nestedKey ? (item[key.key as keyof IUser] as Record<string, string>)[key.nestedKey] : null}</td>;
+									}
+								})
+							}
 						</tr>
 					))}
 			</tbody>

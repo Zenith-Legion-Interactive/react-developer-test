@@ -18,14 +18,9 @@ const navigate = useNavigate();
 
   
 	const header = ['Name', 'Photo','Location','Email', 'Gender', 'Birtdate','Registered Date', 'Title'];
-const propertyKeysToShow: PropertyKey[] = [
-  { key: 'location', nestedKey: 'city' },
-  'email' as unknown as PropertyKey,
-  'gender' as unknown as PropertyKey,
-  'dateOfBirth' as unknown as PropertyKey,
-  'registerDate' as unknown as PropertyKey,
-  'title' as unknown as PropertyKey,
-];
+
+const propertyKeysToShow: PropertyKey<Partial<IUser>>[] = [{ key: 'location', nestedKey: 'city' }, 'email', 'gender', 'dateOfBirth', 'registerDate', 'title'];
+
 
 const onRoute = useCallback(() => {
 	navigate('/');
@@ -34,8 +29,8 @@ const onRoute = useCallback(() => {
 
   return (
 		<div>
-			<input type='hidden' data-testid='getStatus' value={state} />
-			<input type='hidden' data-testid='getProfile' value={users.length} />
+			<input type='hidden' name='status' data-testid='getStatus' value={state} />
+			<input type='hidden' name='profile' data-testid='getProfile' value={users.length ?? 0} />
 			<h1>Profile</h1>
 			<div>
 				<IButton variant='outlined' color='primary' label='Back' onClick={onRoute} />

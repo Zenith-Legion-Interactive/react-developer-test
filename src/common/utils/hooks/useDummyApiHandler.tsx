@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import { API_ID, API_URL } from '../../immutable';
 import { IState, IUser } from './type';
 import useSafeRender from './useSafeRender';

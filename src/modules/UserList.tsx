@@ -3,6 +3,7 @@ import useDummyApiHandler from "../common/utils/hooks/useDummyApiHandler";
 
 import { isEmpty } from 'lodash';
 import MemoizedTableRows, { PropertyKey } from '../common/components/Table';
+import { IUser } from "../common/utils/hooks/type";
 
 
 
@@ -11,7 +12,7 @@ const UserList = () => {
 
   const { state, users } = useDummyApiHandler('user',true);
 
-	  const propertyKeysToShow: PropertyKey[] = ['email' as unknown as PropertyKey];
+    const propertyKeysToShow: PropertyKey<IUser>[] = ['email'];
 		const header = ['Name', 'Email'];
 
 

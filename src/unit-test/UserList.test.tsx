@@ -53,7 +53,7 @@ async function mockingFunction(url:string,status='success') {
 					title: 'ms',
 					updatedDate: '2021-06-21T21:02:07.374Z',
 					properties: {
-						age: 25,
+						age: "25",
 						eyeColor: 'brown',
 						hairColor: 'red',
 					},
@@ -146,7 +146,7 @@ describe('UserList', () => {
 
 		it('check if route path is ok and redirecto profile', () => {
 
-			const propertyKeysToShow: PropertyKey[] = ['email' as unknown as PropertyKey];
+			const propertyKeysToShow: PropertyKey<IUser>[] = ['email'];
 			const header = ['Name', 'Email'];
 
 			render(<MemoizedTableRows data={mockData as IUser[]} head={header} propertyKeys={propertyKeysToShow} />);
