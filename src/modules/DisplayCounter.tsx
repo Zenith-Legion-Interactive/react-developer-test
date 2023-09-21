@@ -8,7 +8,7 @@ const DisplayCounter = () => {
   const count = useAppSelector((state: RootState) => state.counter.count);
 
 
-console.log(count)
+
   // const contextValue = useContext(CounterContext);
 
 	// if (contextValue === null) {
