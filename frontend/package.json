@@ -3,10 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-<<<<<<< HEAD
     "@reduxjs/toolkit": "^1.9.5",
-=======
->>>>>>> e47d5a1 (FEAT: implement counter app and user list)
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -14,20 +11,14 @@
     "bootstrap": "^5.3.2",
     "react": "^18.2.0",
     "react-bootstrap": "^2.8.0",
-<<<<<<< HEAD
     "react-datepicker": "^4.18.0",
+    "redux": "^4.2.1",
+    "redux-mock-store": "^1.5.4",
+    "redux-persist": "^6.0.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.1.2",
     "react-router-dom": "^6.16.0",
     "react-scripts": "5.0.1",
-    "redux": "^4.2.1",
-    "redux-mock-store": "^1.5.4",
-    "redux-persist": "^6.0.0",
-=======
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.16.0",
-    "react-scripts": "5.0.1",
->>>>>>> e47d5a1 (FEAT: implement counter app and user list)
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -53,13 +44,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-<<<<<<< HEAD
   },
   "devDependencies": {
     "@babel/core": "^7.23.0"
   }
 }
-=======
-  }
-}
->>>>>>> e47d5a1 (FEAT: implement counter app and user list)
