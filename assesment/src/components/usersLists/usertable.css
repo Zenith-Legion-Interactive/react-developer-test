@@ -1,0 +1,16 @@
+.mainForm{
+    border-radius: 15px;
+ 
+}
+
+.tableWrapper{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+
+}
+
+.buttonLink{
+    background-color: blue;
+   border-radius: 10px;
+}
