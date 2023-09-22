@@ -1,0 +1,21 @@
+.buttonComponent {
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+.primary {
+  background-color: #67ee28;
+  color: #000;
+}
+
+.secondary {
+  background-color: #aff68f;
+  color: #000;
+}
+
+.danger {
+  background-color: #fb5c6c;
+  color: #000;
+}
