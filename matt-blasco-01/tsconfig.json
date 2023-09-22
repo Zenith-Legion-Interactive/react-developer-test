@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ES6",
     "useDefineForClassFields": false,  //define for es6 for now
-    "lib": ["ES6", "DOM", "DOM.Iterable"],
+    "lib": ["ES6", "DOM", "DOM.Iterable", "ES2017"],
     "module": "ES6",
     "skipLibCheck": true,
     "allowJs": true,
@@ -19,6 +19,9 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "types": ["node", "jest"],
     "paths": {
       "@/*": ["./*"]
     }

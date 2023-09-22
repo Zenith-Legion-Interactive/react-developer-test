@@ -7,15 +7,17 @@ import Root, {
   action as rootAction,
 } from "./routes/root";
 import ErrorPage from './error-page';
-import Contact, {
-  loader as contactLoader,
-  action as contactAction,
-} from "./routes/contact";
-import EditContact, {
+import User, {
+  loader as userLoader,
+  action as userAction,
+} from "./routes/profile/user";
+import EditUser, {
   action as editAction,
-} from "./routes/edit";
-import { action as destroyAction } from "./routes/destroy";
+} from "./routes/profile/edit";
+import { action as destroyAction } from "./routes/profile/destroy";
 import Index from "./routes/index";
+import { Provider } from 'react-redux';
+import store from './store/configureStore';
 
 const router = createBrowserRouter([
   {
@@ -25,29 +27,26 @@ const router = createBrowserRouter([
     loader: rootLoader,
     action: rootAction,
     children: [
-      {
-        errorElement: <ErrorPage />,
-        children: [
           { index: true, element: <Index /> },
           {
-            path: "profile/:contactId",
-            element: <Contact />,
-            loader: contactLoader,
-            action: contactAction
+            path: "profile/:userId",
+            element: <User />,
+            loader: userLoader,
+            action: userAction,
+            errorElement: <ErrorPage />,
           },
           {
-            path: "profile/:contactId/edit",
-            element: <EditContact />,
-            loader: contactLoader,
+            path: "profile/:userId/edit",
+            element: <EditUser />,
+            loader: userLoader,
             action: editAction,
+            errorElement: <ErrorPage />,
           },
           {
-            path: "profile/:contactId/destroy",
+            path: "profile/:userId/destroy",
             action: destroyAction,
-            errorElement: <div>Oops! There was an error.</div>,
+            errorElement: <ErrorPage />,
           },
-        ]
-      },
     ], 
   },
 ]);
@@ -55,7 +54,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
-    {/* <App /> */}
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>,
 )

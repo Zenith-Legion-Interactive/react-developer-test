@@ -2,36 +2,38 @@ import { useEffect } from "react";
 import {
     Outlet,
     NavLink,
+    Link,
     useLoaderData,
     useNavigation,
     useSubmit,
     Form,
     redirect
 } from "react-router-dom";
-import { getContacts, createContact } from "../contacts";
-import { ContactObjectInterface } from "./contact";
+import { getUsers, createUser } from "../api-calls";
+import { UserObjectInterface } from "./profile/user";
 import { RequestObject } from "../types";
+import PublicButton from "../public-components/button";
 
 
 export async function loader({ request }: RequestObject) {
   const url = new URL(request.url);
   const q = url.searchParams.get("q") || '';
-  const contacts = await getContacts(q);
-    return { contacts, q };
+  const users = await getUsers(q);
+    return { users, q };
 }
 
 export async function action() {
-    const contact = await createContact();
-    return redirect(`/profile/${contact.id}/edit`);
+    const user = await createUser();
+    return redirect(`/profile/${user.id}/edit`);
 }
 
-export interface RootLoaderContactsInterface{
-    contacts?: ContactObjectInterface[];
+export interface RootLoaderUsersInterface{
+    users?: UserObjectInterface[];
     q: string
 }
 
 export default function Root() {
-    const { contacts, q } = useLoaderData() as RootLoaderContactsInterface; //typecast for now since it's still an ongoing feature to use generics https://github.com/remix-run/react-router/discussions/9854
+    const { users, q } = useLoaderData() as RootLoaderUsersInterface; //typecast for now since it's still an ongoing feature to use generics https://github.com/remix-run/react-router/discussions/9854
     const navigation = useNavigation();
     const submit = useSubmit();
 
@@ -42,18 +44,29 @@ export default function Root() {
       }
     }, [q]);
 
+
+
+    useEffect(()=> {
+      const users = localStorage.getItem("1");
+      if(!users){
+        setTimeout(()=> {
+          window.location.reload();
+        }, 500)
+      }
+    }, [])
+
     const searching = navigation.location && new URLSearchParams(navigation.location.search).has("q");
     
     return (
       <>
         <div id="sidebar">
-          <h1>Display Contact List Prototype</h1>
+          <h1>Display User List Prototype</h1>
           <div>
             <Form id="search-form" role="search">
               <input
                 id="q"
                 className={searching ? "loading" : ""}
-                aria-label="Search contacts"
+                aria-label="Search users"
                 placeholder="Search"
                 type="search"
                 name="q"
@@ -76,17 +89,23 @@ export default function Root() {
                 aria-live="polite"
               ></div>
             </Form>
-            <Form method="post">
-                <button type="submit">New</button>
-            </Form>
+            {/* <Form method="post">
+            </Form> */}
+            <Link
+              to={`/`}
+            >
+              
+              <PublicButton type="submit" description="Counter" inhibitDefaultClass/>
+            </Link>
+            
           </div>
           <nav>
-            {contacts?.length ? (
+            {users?.length ? (
                 <ul>
-                {contacts?.map((contact) => (
-                    <li key={contact.id}>
+                {users?.map((user) => (
+                    <li key={user.id}>
                       <NavLink 
-                        to={`profile/${contact.id}`}
+                        to={`profile/${user.id}`}
                         className={({ isActive, isPending }) =>
                         isActive
                         ? "active"
@@ -95,21 +114,21 @@ export default function Root() {
                         : ""
                         }
                       >
-                        {contact.first || contact.last ? (
+                        {user.firstName || user.lastName ? (
                         <>
-                        {contact.first} {contact.last}
+                        {user.firstName} {user.lastName}
                         </>
                         ) : (
                         <i>No Name</i>
                         )}{" "}
-                        {contact.favorite && <span>★</span>}
+                        {user.favorite && <span>★</span>}
                       </NavLink>
                     </li>
                 ))}
                 </ul>
             ) : (
                 <p>
-                <i>No contacts</i>
+                <i>No users</i>
                 </p>
             )}
           </nav>
