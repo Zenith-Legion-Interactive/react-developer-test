@@ -1,0 +1,76 @@
+
+/* button */
+:root{
+  --primary: #2752e7;
+  --secondary: #198754;
+  --default: #000;
+  --danger: #ff0e0e;
+  --text-color: #7e7e7e;
+
+}
+
+.btn{
+  outline: transparent;
+  border: transparent;
+  border-radius: 8px;
+  padding: 1rem 2rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color:#000;
+}
+
+.btn:hover{
+  background: var(--btn-color);
+  color: var(--text-color);
+}
+
+
+/* variant */
+
+
+
+
+
+
+.btn-primary{
+  background: var(--primary);
+  color: var(--default);
+}
+
+.btn-primary:hover{
+  background: var(--secondary);
+  color: var(--default);
+}
+
+.btn-secondary{
+  background: var(--secondary);
+  color: var(--default);
+}
+
+.btn-secondary:hover{
+  background: var(--secondary);
+  color: var(--default);
+}
+
+
+.btn-danger{
+  background: var(--danger);
+  color: var(--default);
+}
+
+.btn-danger:hover{
+  background: var(--secondary-color) !important;
+  color: var(--default) !important;
+}
+
+.btn-default{
+  background: var(--default);
+  color: var(--primary);
+}
+
+.btn-default:hover{
+  background: var(--secondary-color);
+  color: var(--default);
+}
+
