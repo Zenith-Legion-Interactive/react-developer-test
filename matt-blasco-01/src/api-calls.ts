@@ -20,7 +20,7 @@ export async function getUsers(query?: string) {
       const response = await axios.get(`${API_BASE_URL}user`, {
         headers: API_HEADERS,
       });
-      IndexedDB.setItem("users", response.data.data);
+      IndexedDB.setItem("users", response?.data?.data);
       localStorage.setItem("1", "loaded")
     } catch (error) {
       console.error('Error fetching users:', error);
