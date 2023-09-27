@@ -1,0 +1,23 @@
+/* Button.css */
+.button {
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+.primary {
+  background-color: rgb(34, 150, 218);
+  color: white;
+}
+
+.secondary {
+  background-color: gray;
+  color: white;
+}
+
+.danger {
+  background-color: rgb(212, 110, 110);
+  color: white;
+}
