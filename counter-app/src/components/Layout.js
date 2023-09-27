@@ -1,25 +1,16 @@
-import {Outlet, Link} from "react-router-dom";
+import React from "react";
+import {Outlet} from "react-router-dom";
+import Sidebar from "./sidebar/Sidebar";
 
-export default function Layout() {
+const Layout = () => {
   return (
-    <div>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/users">Users</Link>
-          </li>
-          <li>
-            <Link to="/nothing-here">Nothing Here</Link>
-          </li>
-        </ul>
-      </nav>
-
-      <hr />
-
-      <Outlet />
+    <div className="flex">
+      <Sidebar />
+      <div className="flex-1 p-4 bg-gray-100">
+        <Outlet />
+      </div>
     </div>
   );
-}
+};
+
+export default Layout;

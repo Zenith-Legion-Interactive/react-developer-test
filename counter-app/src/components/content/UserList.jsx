@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 import axios from "axios";
 // import CreateNewUser from "./CreateNewUser";
 import {Link} from "react-router-dom";
-import Button from "./Button";
+import Button from "../Button";
 // import {useGetUserListQuery} from "../api/usersApi";
 
 const API_BASE_URL = "/data";
@@ -64,26 +64,39 @@ const UserList = () => {
 
   return (
     <div>
-      <h1>API Integration</h1>
-      {error && <p>{error}</p>}
+      <h1 className="text-2xl font-bold mb-4">User List</h1>
+      {error && <p className="text-red-500">{error}</p>}
       {loading ? (
         <p>Loading users...</p>
       ) : (
         !error && (
-          <ul>
-            {users.map((user, index) => (
-              <li key={index}>
-                {user.firstName} {user.lastName} - {user.email}{" "}
-                <Link
-                  style={{textDecoration: "none", color: "white"}}
-                  to={`/profile/${user.id}`}
-                >
-                  {" "}
-                  <Button styleType="primary">View Profile</Button>
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <table className="min-w-full border">
+            <thead>
+              <tr>
+                <th className="border p-2">First Name</th>
+                <th className="border p-2">Last Name</th>
+                <th className="border p-2">Email</th>
+                <th className="border p-2">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {users.map((user, index) => (
+                <tr key={index}>
+                  <td className="border p-2">{user.firstName}</td>
+                  <td className="border p-2">{user.lastName}</td>
+                  <td className="border p-2">{user.email}</td>
+                  <td className="border p-2">
+                    <Link
+                      to={`/profile/${user.id}`}
+                      className="text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded transition duration-150"
+                    >
+                      View Profile
+                    </Link>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         )
       )}
     </div>
