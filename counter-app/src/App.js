@@ -1,10 +1,10 @@
 // import Counter from "./components/Counter";
-import UserList from "./components/content/UserList";
+import UserList from "./components/content/user/UserList";
 import {Routes, Route} from "react-router-dom";
 import Layout from "./components/Layout";
 import Home from "./components/Home";
 import NotFoundPage from "./components/NotFoundPage";
-import Profile from "./components/Profile";
+import Profile from "./components/content/user/Profile";
 
 function App() {
   return (

@@ -2,8 +2,9 @@ import React, {useState, useEffect} from "react";
 import axios from "axios";
 // import CreateNewUser from "./CreateNewUser";
 import {Link} from "react-router-dom";
-import Button from "../Button";
+import Button from "../../Button";
 // import {useGetUserListQuery} from "../api/usersApi";
+import Loading from "../../Loading";
 
 const API_BASE_URL = "/data";
 const APP_ID = "65080fec01538513690ca63e";
@@ -64,39 +65,49 @@ const UserList = () => {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-4">User List</h1>
       {error && <p className="text-red-500">{error}</p>}
       {loading ? (
-        <p>Loading users...</p>
+        <Loading />
       ) : (
         !error && (
-          <table className="min-w-full border">
-            <thead>
-              <tr>
-                <th className="border p-2">First Name</th>
-                <th className="border p-2">Last Name</th>
-                <th className="border p-2">Email</th>
-                <th className="border p-2">Actions</th>
-              </tr>
-            </thead>
-            <tbody>
-              {users.map((user, index) => (
-                <tr key={index}>
-                  <td className="border p-2">{user.firstName}</td>
-                  <td className="border p-2">{user.lastName}</td>
-                  <td className="border p-2">{user.email}</td>
-                  <td className="border p-2">
-                    <Link
-                      to={`/profile/${user.id}`}
-                      className="text-white bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded transition duration-150"
-                    >
-                      View Profile
-                    </Link>
-                  </td>
+          <>
+            <h1 className="text-2xl font-bold mb-4">User List</h1>
+            <table className="min-w-max w-full table-auto">
+              <thead>
+                <tr className="bg-gray-200 text-gray-600 uppercase text-sm leading-normal">
+                  <th className="py-3 px-6 text-left">Name</th>
+                  <th className="py-3 px-6 text-left">Email</th>
+                  <th className="py-3 px-6 text-left">Actions</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody className="text-gray-600 font-light">
+                {users.map((user, index) => (
+                  <tr
+                    key={index}
+                    className="border-b border-gray-200 hover:bg-gray-100"
+                  >
+                    <td className=" px-4 py-2 flex items-center">
+                      <img
+                        src={user.picture}
+                        alt="User Profile"
+                        className="w-10 h-10 rounded-full mr-2"
+                      />
+                      {user.firstName} {user.lastName}
+                    </td>
+                    <td className="py-3 px-6 text-left">{user.email}</td>
+                    <td className="py-3 px-6 text-left">
+                      <Link
+                        to={`/profile/${user.id}`}
+                        className="rounded-lg px-4 py-2 bg-blue-500 text-blue-100 hover:bg-blue-600 duration-300"
+                      >
+                        view profile
+                      </Link>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </>
         )
       )}
     </div>

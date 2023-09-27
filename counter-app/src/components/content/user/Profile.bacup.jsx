@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import {useParams} from "react-router-dom";
 import axios from "axios";
-import Button from "./Button";
+import Button from "../../Button";
 import {Link} from "react-router-dom";
 
 const API_BASE_URL = "/data";
