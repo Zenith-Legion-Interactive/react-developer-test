@@ -4,7 +4,7 @@ const initialState = {
     loading: false
 }
 
-const reducer = ( state = initialState, action ) => {
+const combinedReducer = ( state = initialState, action ) => {
     const type = action.type;
 
     switch( type ){
@@ -23,4 +23,4 @@ const reducer = ( state = initialState, action ) => {
     }
 }
 
-export default reducer;
+export default combinedReducer;
