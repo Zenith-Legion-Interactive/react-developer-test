@@ -15,6 +15,11 @@ const Counter = () => {
             <h1>{ counter }</h1>
             <div>
                 <Button
+                    clickAction={ () => dispatch({ type: 'RESET' }) } 
+                    type="danger">
+                    Reset
+                </Button>
+                <Button
                     clickAction={ () => dispatch({ type: 'DECREMENT' }) } 
                     type="danger">
                     Decrement
