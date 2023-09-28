@@ -6,10 +6,6 @@ const Counter = () => {
     const counter = useSelector( state => state.counter );
     const dispatch = useDispatch();
 
-    console.log( dispatch );
-
-    const sample = () => { console.log('hello') }
-
     return (
         <div>
             <h1>{ counter }</h1>

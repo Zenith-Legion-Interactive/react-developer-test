@@ -21,7 +21,6 @@ const UserListPage = () => {
         axios.get( externalAPI, config )
             .then( response => {
                 dispatch({ type: 'SET_LOADING', payload: { value: false }});
-
                 dispatch({ type: 'SET_USERS', payload: { value: response.data.data }})
             })
             .catch( err => {

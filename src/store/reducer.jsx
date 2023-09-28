@@ -5,7 +5,6 @@ const initialState = {
 }
 
 const reducer = ( state = initialState, action ) => {
-    console.log( action );
     const type = action.type;
 
     switch( type ){
