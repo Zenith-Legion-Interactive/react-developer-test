@@ -20,12 +20,12 @@ const UserListPage = () => {
 
         axios.get( externalAPI, config )
             .then( response => {
-                dispatch({ type: 'SET_LOADING', payload: { value: false }});
                 dispatch({ type: 'SET_USERS', payload: { value: response.data.data }})
             })
             .catch( err => {
                 console.warn( err );
-            });
+            })
+            .finally( () => dispatch({ type: 'SET_LOADING', payload: { value: false }}));
     }, []);
 
 
@@ -33,7 +33,7 @@ const UserListPage = () => {
         <>
             {
                 loading ?
-                <p>Fetching users...</p> :
+                <p data-testid='loading'>Fetching users...</p> :
                 users && users.map( user => <li>{`${user.firstName} ${user.lastName}`} </li> )   
             }
         </>

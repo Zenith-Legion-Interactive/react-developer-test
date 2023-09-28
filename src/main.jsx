@@ -13,9 +13,7 @@ import UserListPage from './pages/UserListPage.jsx';
 // Router
 import {
   createBrowserRouter,
-  RouterProvider,
-  Route,
-  Link,
+  RouterProvider
 } from "react-router-dom";
 
 const router = createBrowserRouter([
