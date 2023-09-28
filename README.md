@@ -1,4 +1,5 @@
 # react-developer-test
+
 React.js Developer Test
 
 Instructions:
@@ -54,5 +55,3 @@ Task 6: Testing
 Task 7: Bonus (Optional)
 
 - Implement Redux or a state management library of your choice to manage the global state of the application. Refactor your Counter component to use this global state.
-
-
