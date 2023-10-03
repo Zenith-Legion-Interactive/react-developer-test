@@ -9,6 +9,7 @@ import store from './store/store';
 // Components
 import App from './App.jsx'
 import UserListPage from './pages/UserListPage.jsx';
+import Profile from './components/Profile';
 
 // Router
 import {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
     path: "/users",
     element: <UserListPage />,
   },
+  {
+    path: "/users/:id",
+    element: <Profile />
+  }
 ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(

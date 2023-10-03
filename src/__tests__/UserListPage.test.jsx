@@ -18,5 +18,4 @@ test('Should render loading text while fetching', () => {
 
     render(<UserListPage />);
     expect(screen.getByText('Fetching users...')).toBeInTheDocument();
-
 });

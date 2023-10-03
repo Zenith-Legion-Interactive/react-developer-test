@@ -3,6 +3,9 @@ import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from 'react-router-dom';
 
+// User
+import User from '../components/User';
+
 const externalAPI = 'https://dummyapi.io/data/v1/user';
 const config = {
     headers: {
@@ -40,11 +43,19 @@ const UserListPage = () => {
                     <Link to='/'>Back</Link>
                 </button>
             </nav>
-            {
-                loading ?
-                <p data-testid='loading'>Fetching users...</p> :
-                users && users.map( user => <li>{`${user.firstName} ${user.lastName}`} </li> )   
-            }
+
+            <section>
+                <h2>Users:</h2>
+                <ul style={{ listStyleType: 'none' }}>
+                    {
+                        loading ?
+                        <p data-testid='loading'>Fetching users...</p> :
+                        users && 
+                        users
+                            .map( user => <User key={user.id} user={ user } /> )   
+                    }
+                </ul>
+            </section>
         </>
     )
 }
