@@ -1,6 +1,7 @@
 import axios from 'axios';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from 'react-router-dom';
 
 const externalAPI = 'https://dummyapi.io/data/v1/user';
 const config = {
@@ -10,27 +11,35 @@ const config = {
 }
 
 const UserListPage = () => {
-    const loading = useSelector( state => state.loading );
     const users = useSelector( state => state.users );
+    const [ loading, setLoading ] = useState(false);
 
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch({ type: 'SET_LOADING', payload: { value: true }});
+    const fetchUsers = async () => {
+        setLoading( true );
 
         axios.get( externalAPI, config )
-            .then( response => {
-                dispatch({ type: 'SET_USERS', payload: { value: response.data.data }})
-            })
-            .catch( err => {
-                console.warn( err );
-            })
-            .finally( () => dispatch({ type: 'SET_LOADING', payload: { value: false }}));
-    }, []);
+        .then( response => {
+            dispatch({ type: 'SET_USERS', payload: { value: response.data.data }})
+        })
+        .catch( err => {
+            console.warn( err );
+        })
+        .finally( () => setLoading( false ));
+    }
 
+    useEffect(() => {
+        fetchUsers();
+    }, []);
 
     return (
         <>
+            <nav>
+                <button>
+                    <Link to='/'>Back</Link>
+                </button>
+            </nav>
             {
                 loading ?
                 <p data-testid='loading'>Fetching users...</p> :
