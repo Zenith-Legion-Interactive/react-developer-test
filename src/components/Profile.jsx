@@ -3,11 +3,14 @@ import { useEffect, useState } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const externalAPI = 'https://dummyapi.io/data/v1/user';
+// config
+import configuration from '../config/index';
+
+const externalAPI = configuration.api;
 const config = {
-  headers: {
-      'app-id' : '65080fec01538513690ca63e'
-  }
+    headers: {
+        'app-id' : configuration.app_id
+    }
 }
 
 const Profile = () => {

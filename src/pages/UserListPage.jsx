@@ -6,10 +6,13 @@ import { Link } from 'react-router-dom';
 // User
 import User from '../components/User';
 
-const externalAPI = 'https://dummyapi.io/data/v1/user';
+// config
+import configuration from '../config/index';
+
+const externalAPI = configuration.api;
 const config = {
     headers: {
-        'app-id' : '65080fec01538513690ca63e'
+        'app-id' : configuration.app_id
     }
 }
 
