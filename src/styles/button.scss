@@ -1,0 +1,21 @@
+@import "./variables.scss";
+
+.btn {
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+
+  @each $key, $val in $colors {
+    &.btn-#{$key} {
+      color: contrastText($val);
+      border: 1px solid #{darken($val, 5%)} !important;
+      background-color: #{$val} !important;
+      &:hover {
+        background-color: #{darken($val, 5%)} !important;
+      }
+      &:active {
+        background-color: #{darken($val, 10%)} !important;
+      }
+    }
+  }
+}

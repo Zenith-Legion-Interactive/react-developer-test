@@ -1,0 +1,16 @@
+$colors: (
+  primary: #024fa2,
+  secondary: #3b8c50,
+  danger: #8a2525,
+  info: #12abf8,
+  warning: #dbac00,
+);
+
+@function contrastText($color) {
+    $result: invert($color);
+    $lightness: lightness($result);
+    @if ($lightness < 50) {
+        @return #000;
+    }
+    @return #fff;
+}

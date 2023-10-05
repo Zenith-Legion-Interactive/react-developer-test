@@ -1,0 +1,9 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  gap: 2px;
+  .counterLabel {
+    font-size: 20px;
+    padding: 0 20px;
+  }
+}
