@@ -5,7 +5,14 @@ import Counter from "./Counter";
 export default function Home() {
   return (
     <>
-      <Counter />
+      <div className="h-screen flex flex-col justify-center items-around">
+        <div>
+          <Counter />
+        </div>
+        <div>
+          <Counter />
+        </div>
+      </div>
     </>
   )
 }
