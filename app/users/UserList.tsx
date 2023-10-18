@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 async function getUserList() {
   
   // await new Promise(resolve => setTimeout(resolve, 5000)) // Imitate 5s loading
@@ -92,14 +94,16 @@ export default async function UserList() {
             lastName: string;
             email: string;
           }) => (
-            <div key={user.id} className="m-2 flex items-center border rounded border-gray-600">
-              <div className="border-r-2 border-gray-600 px-2 py-1">
-                {user.firstName} {user.lastName}
+            <Link href={`/users/${user.id}`} key={user.id}>
+              <div className="m-2 flex items-center border rounded border-gray-600">
+                <div className="border-r-2 border-gray-600 px-2 py-1">
+                  {user.firstName} {user.lastName}
+                </div>
+                <div className="p-2">
+                  {user.email}
+                </div>
               </div>
-              <div className="p-2">
-                {user.email}
-              </div>
-            </div>
+            </Link>
           ))
         }
 
