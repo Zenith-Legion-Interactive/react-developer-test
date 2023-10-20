@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react';
+import Button from '@/components/Button';
 
 
 export default function Counter() {
@@ -21,14 +22,17 @@ export default function Counter() {
 
   return (
     <>
+
       {/* Container */}
       <div className="flex justify-center items-center m-12">
 
       {/* Decrement Button */}
       <div className="p-12 flex flex-col justify-center items-center">
         <div>
-          <button className="bg-blue-500 hover:bg-blue-700 text-white text-5xl font-bold py-1 px-4 rounded"
-            onClick={handleDecreaseButtonClick}>-</button>
+          <Button
+            label="-"
+            theme="secondary"
+            onClick={handleDecreaseButtonClick} />
         </div>
         <div>Decrement</div>
       </div>
@@ -50,16 +54,19 @@ export default function Counter() {
 
         {/* Reset Button */}
         <div>
-          <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-            onClick={handleResetButtonClick}>Reset</button>
+          <Button
+            label="Reset"
+            theme="danger"
+            onClick={handleResetButtonClick} />
         </div>
       </div>
 
       {/* Increment Button */}
       <div className="p-12 flex flex-col justify-center items-center">
         <div>
-          <button className="bg-blue-500 hover:bg-blue-700 text-white text-5xl font-bold py-1 px-4 rounded"
-            onClick={handleIncreaseButtonClick}>+</button>
+          <Button
+            label="+"
+            onClick={handleIncreaseButtonClick} />
         </div>
         <div>Increment</div>
       </div>
