@@ -32,6 +32,12 @@ Task 3: API Integration
 - Create a new functional component called UserList that fetches a list of users from an external JSON API (e.g., JSONPlaceholder) and displays them in a list.
 - Each user should be displayed with their name and email.
 - Handle loading and error states appropriately.
+- `.env` file
+  ```.env
+  API_URL=https://dummyapi.io/data/v1
+  API_APP_ID=65080fec01538513690ca63e
+  ```
+
 
 Task 4: Routing
 
