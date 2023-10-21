@@ -51,8 +51,8 @@ export default function Profile({ userDetails } :
                 {userDetails.title} {userDetails.firstName} {userDetails.lastName}
                 {/* Gender Pill */}
                 { ( (userDetails.gender).toLowerCase() === 'male' ) ?
-                  <span className="text-xs p-1 mx-2 rounded bg-blue-400">male</span> :
-                  <span className="text-xs p-1 mx-2 rounded bg-pink-400">female</span>
+                  <span className="text-xs p-1 mx-2 rounded bg-blue text-white">male</span> :
+                  <span className="text-xs p-1 mx-2 rounded bg-pink">female</span>
                 }
                 
               </div>

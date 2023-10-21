@@ -82,6 +82,10 @@ export default async function UserList() {
           {errorMsg}
         </div>
       }
+
+      { userList &&
+        <div className="flex justify-center text-blue-dark font-bold">Click the rows to go the their User Details</div>
+      }
       
       {/* List */}
       <div className="card rounded drop-shadow">
