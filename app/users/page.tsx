@@ -3,7 +3,7 @@ import UserList from "./UserList";
 
 import Loading from '../loading';
 
-export default function Home() {
+export default function Users() {
   return (
     <>
       <div className="h-screen flex flex-col justify-center items-around">

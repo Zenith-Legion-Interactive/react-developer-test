@@ -28,7 +28,7 @@ export default function Counter() {
 
       {/* Decrement Button */}
       <div className="p-12 flex flex-col justify-center items-center">
-        <div>
+        <div data-testid="decrement-button-div">
           <Button
             label="-"
             theme="secondary"
@@ -46,14 +46,14 @@ export default function Counter() {
           
           <div>
             <div className="h-24 w-16 bg-white text-3xl text-bold flex justify-center items-center">
-              <span>{count}</span>
+              <span data-testid="counter-text">{count}</span>
             </div>
           </div>
           
         </div>
 
         {/* Reset Button */}
-        <div>
+        <div data-testid="reset-button-div">
           <Button
             label="Reset"
             theme="danger"
@@ -63,7 +63,7 @@ export default function Counter() {
 
       {/* Increment Button */}
       <div className="p-12 flex flex-col justify-center items-center">
-        <div>
+        <div data-testid="increment-button-div">
           <Button
             label="+"
             onClick={handleIncreaseButtonClick} />
